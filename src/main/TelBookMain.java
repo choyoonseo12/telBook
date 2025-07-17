@@ -12,7 +12,7 @@ public class TelBookMain {
         UserView userView = new UserView();
         Scanner sc = new Scanner(System.in);
         while (true) {
-            System.out.println("1.입력 2.수정 3.삭제. 4.목록 5.검색 6.종료");
+            System.out.println("1.입력 2.수정 3.삭제.4 4.목록 5.검색 6.종료");
             int num = sc.nextInt();
             switch (num){
                 case 1:
