@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TelBookSerivice implements CrudInterface{
+public class TelBookSerivice implements CrudInterface {
     // Db 연결하기
     Connection conn = DBConn.getConnection();
     PreparedStatement psmt = null;
@@ -18,13 +18,35 @@ public class TelBookSerivice implements CrudInterface{
     // select * from telbook > sql;
 
     @Override
-    public int InsertData(TelDto dto) {
+    public int insertData(TelDto dto) {
         System.out.println("[TelBookSerivice.InsertData]");
+
+        try {
+            sql = "INSERT INTO telbook(name, age, address, phone) ";
+            sql = sql + "VALUES(?, ?, ?, ?) ";
+            psmt = conn.prepareStatement(sql);
+
+            // ? 각 자리를 Mapping 해 준다.
+            psmt.setString(1, dto.getName());
+            psmt.setInt(2, dto.getAge());
+            psmt.setString(3, dto.getAddress());
+            psmt.setString(4, dto.getPhone());
+
+            // 쿼리 실행하기
+            int result = psmt.executeUpdate();
+            psmt.close();
+            return result;
+
+
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+
         return 0;
     }
 
     @Override
-    public int UpdateData(TelDto dto) {
+    public int updateData(TelDto dto) {
         System.out.println("[TelBookSerivice.UpdateData]");
         return 0;
     }
