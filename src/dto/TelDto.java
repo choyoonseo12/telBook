@@ -1,14 +1,26 @@
 package dto;
 
-public class TelDto {
+public class TelDto extends CommonField {
     private int id;
     private String name;
     private int age;
     private String address;
     private String phone;
 
+    @Override
     public String toString() {
-        // String.format()
+        return "TelDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", insertedDate='" + getInsertedDate() + '\'' +
+                ", updatedDate='" + getUpdatedDate() +
+                '}';
+    }
+
+    // String.format()
         // 문자열을 형식에 맞춰서 만드는 함수
         // System.out.println(객체);
         // 자동으로  toString()실행
@@ -18,10 +30,7 @@ public class TelDto {
         //  \n → 줄바꿈
         // return str;
         // 만들어진 포맷된 문자열을 반환
-        String str = String.format("아이디 %d \n이름 %s \n나이 %s \n주소 %s \n전화번호 %s \n",
-                id, name, age, address, phone);
-        return str;
-    }
+
 
     public int getId() {
         return id;
